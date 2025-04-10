@@ -1,0 +1,10 @@
+input:disabled {
+    background-color: #c5c3c3;
+    color: rgb(123, 125, 126);
+    cursor: not-allowed;
+    
+  }
+  td{
+    border-bottom: none;
+  }
+  

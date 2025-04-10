@@ -1,0 +1,102 @@
+<div class="container mt-3">
+    <span class="page-title font-weight-bold font-italic">{{ titleRequest }}</span>
+    <a routerLink="/request-create">
+      <img *ngIf="this.isAdmin" width="20" height="20" src="images/add-icon.png" title="Add New" />
+    </a>
+    <span style="
+      float: right;
+      padding-right: 30px;
+      font-style: italic;
+      font-weight: bold;
+    ">{{ welcomeMsg }}</span>
+    <br /><br />
+  
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>User</th>
+          <th>Description</th>
+          <th>Justification</th>
+          <th>Date Needed</th>
+          <th>Delivery Mode</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of requests">
+          <td>{{ request.user.username }}</td>
+          <td>{{ request.description }}</td>
+          <td>{{ request.justification }}</td>
+          <td>{{ request.dateNeeded }}</td>
+          <td>{{ request.deliveryMode }}</td>
+          <td>{{ request.status }}</td>
+          <td>{{ request.total | currency }}</td>
+          <td class="justify-content-evenly align-items-center d-flex">
+            <a routerLink="/request-detail/{{ request.id }}" title="View Details">
+                <img width="20" height="20" src="images/details.png" />
+              </a>
+          
+              <a routerLink="/request-edit/{{ request.id }}" title="Edit User">
+                <img width="20" height="20" src="images/pencil-icon.png" />
+              </a>
+          
+              <a routerLink="/request-lines/{{ request.id }}" title="Request Lines">
+                <img width="20" height="20" src="images/lines.png" />
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container mt-3">
+    <span class="page-title font-weight-bold font-italic">{{ titleLines }}</span>
+    <a routerLink="/lineItem-create">
+      <img *ngIf="this.isAdmin" width="20" height="20" src="images/add-icon.png" title="Add New" />
+    </a>
+    <br /><br />
+  
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>User</th>
+          <th>Description</th>
+          <th>Justification</th>
+          <th>Date Needed</th>
+          <th>Delivery Mode</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let li of lineItems">
+          <td>{{ li.id }}</td>
+          <td>{{ li.requestId }}</td>
+          <td>{{ li.productId }}</td>
+          <td>{{ li.quantity }}</td>
+          <td class="justify-content-evenly align-items-center d-flex">
+            <a routerLink="/lineItem-detail/{{ li.id }}" title="View Details">
+                <img width="20" height="20" src="images/details.png" />
+              </a>
+          
+              <a routerLink="/lineItem-edit/{{ li.id }}" title="Edit User">
+                <img width="20" height="20" src="images/pencil-icon.png" />
+              </a>
+          
+              <a title="Delete User" (click)="delete(li.id)">
+                <img
+                  src="images/delete.jpg"
+                  width="20"
+                  height="20"
+                  title="Delete Movie"
+                />
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

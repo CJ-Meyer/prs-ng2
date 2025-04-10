@@ -1,0 +1,49 @@
+<div *ngIf="request" class="p-4">
+    <h1>{{ title }}</h1>
+    <table class="table table-sm">
+      <tr>
+        <td>User:</td>
+        <td><input [value]="request.user.username" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Request #:</td>
+        <td><input [value]="request.requestNumber" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Description:</td>
+        <td><input [value]="request.description" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Justification:</td>
+        <td><input [value]="request.justification" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Date Needed:</td>
+        <td><input [value]="request.dateNeeded" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Delivery Mode:</td>
+        <td><input [value]="request.deliveryMode" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td><input [value]="request.status" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Total:</td>
+        <td><input [value]="request.total" class="rounded" disabled /></td>
+      </tr>
+      <tr>
+        <td>Submitted Date:</td>
+        <td><input [value]="request.submittedDate" class="rounded" disabled /></td>
+      </tr>
+      <tr *ngIf="request.reasonForRejection">
+        <td>Rejection Reason:</td>
+        <td><input [value]="request.reasonForRejection" class="rounded" disabled /></td>
+      </tr>
+    </table>
+  
+    <a [routerLink]="['/request-edit', request.id]" class="btn btn-sm btn-warning">Edit</a>
+    <button (click)="delete()" class="btn btn-sm btn-danger ms-2">Delete</button>
+  </div>
+  
