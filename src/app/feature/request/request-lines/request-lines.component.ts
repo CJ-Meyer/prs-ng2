@@ -17,7 +17,7 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
   titleRequest: string = 'Request-Lines';
   titleLines: string = 'Line-Items for Request'
   lineItems: LineItem[] = [];
-  requests: Request;
+  request!: Request;
 
   subscription!: Subscription;
   welcomeMsg!: string;
@@ -31,7 +31,7 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
     this.loggedInUser = this.sysSvc.loggedInUser;
     this.isAdmin = this.loggedInUser.isAdmin;
     this.subscription = this.requestSvc.list().subscribe({
-      next: (resp) => (this.requests = resp),
+      next: (resp) => (this.request = resp),
       error: (err) => console.error('Error loading requests:', err)
     });
   }
@@ -42,7 +42,7 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
 
   delete(id: number): void {
     this.liSvc.delete(id).subscribe(() => {
-      this.requests = this.requests.filter(r => r.id !== id);
+      this.request = this.request.filter(r => r.id !== id);
     });
   }
 }
