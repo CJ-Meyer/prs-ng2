@@ -1,7 +1,8 @@
+<app-menu></app-menu>
 <div class="container mt-3">
     <span class="page-title font-weight-bold font-italic">{{ title }} </span>
     <a routerLink="/product-create">
-      <img *ngIf="this.isAdmin" width="20" height="20" src="images/add-icon.png" title="Add New" />
+      <img  width="20" height="20" src="images/add-icon.png" title="Add New" />
     </a>
     <span style="
       float: right;
@@ -26,7 +27,7 @@
       <tbody>
         <tr *ngFor="let product of products">
           <td>{{ product.partNumber }}</td>
-          <td>{{ product.productName }}</td>
+          <td>{{ product.name }}</td>
           <td>{{ product.vendor.name }}</td>
           <td>${{ product.price.toFixed(2) }}</td>
           <td>{{ product.unit }}</td>

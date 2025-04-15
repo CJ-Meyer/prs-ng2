@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="user" class="component">
     <section class="heading">
       <span class="page-title font-weight-bold font-italic">{{ title }}</span>
@@ -46,6 +47,12 @@
           <td>Admin:</td>
           <td>
             <input [(ngModel)]="user.isAdmin" class="rounded" type="checkbox" disabled />
+          </td>
+        </tr>
+        <tr>
+          <td>Reviewer:</td>
+          <td>
+            <input [(ngModel)]="user.isReviewer" class="rounded" type="checkbox" disabled />
           </td>
         </tr>
     </tbody>

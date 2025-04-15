@@ -14,7 +14,6 @@ import { RequestCreateDto } from '../../../model/request-create-dto';
 export class RequestCreateComponent implements OnInit, OnDestroy {
   title: string = 'Request-Create';
   subscription!: Subscription;
-  
   requestDto: RequestCreateDto = {
     userId: 0,
     description: '',
@@ -32,7 +31,6 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('RequestCreateComponent');
-    // fake login user assignment
     this.userSvc.getById('1').subscribe(user => {
       this.requestDto.userId = user.id;
       console.log('RequestCreateComponent initialized', this.requestDto);

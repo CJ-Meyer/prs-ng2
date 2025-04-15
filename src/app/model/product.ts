@@ -4,7 +4,7 @@ export class Product {
     id: number;
     vendor: Vendor;
     partNumber: string;
-    productName: string;
+    name: string;
     price: number;
     unit: string;
     photoPath: string;
@@ -13,7 +13,7 @@ export class Product {
       id: number = 0,
       vendor: any = null,
       partNumber: string = '',
-      productName: string = '',
+      name: string = '',
       price: number = 0.0,
       unit: string = '',
       photoPath: string = ''
@@ -21,14 +21,14 @@ export class Product {
       this.id = id;
       this.vendor = vendor;
       this.partNumber = partNumber;
-      this.productName = productName;
+      this.name = name;
       this.price = price;
       this.unit = unit;
       this.photoPath = photoPath;
     }
   
     details(): string {
-      return `Product: ${this.partNumber} - ${this.productName} ($${this.price})`;
+      return `Product: ${this.partNumber} - ${this.name} ($${this.price})`;
     }
   }
   

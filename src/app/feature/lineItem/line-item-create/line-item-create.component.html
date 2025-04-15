@@ -1,1 +1,36 @@
-<p>line-item-create works!</p>
+<app-menu></app-menu>
+<div class="container mt-3">
+    <span style="float: right; padding-right: 30px; font-style: italic; font-weight: bold;">
+      {{ welcomeMsg }}
+    </span>
+  
+    <br /><br/>
+  
+    <form *ngIf="newlineItem" #lineItemForm="ngForm">
+      <div class="mb-3">
+        <label for="product" class="form-label">Product</label>
+        <select [(ngModel)]="newlineItem.product" name="product" class="form-control" [compareWith]="compareProduct" required>
+            <option *ngFor="let p of products" [ngValue]="p">
+              {{ p.name + ' - ' + p.vendor.name + ' - $' + p.price.toFixed(2) }}
+            </option>
+          </select>
+      </div>
+  
+      <div class="mb-3">
+        <label for="quantity" class="rounded">Quantity</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="newlineItem.quantity"
+          name="quantity"
+          min="1"
+          required
+        />
+      </div>
+  
+      <div class="d-flex justify-content-end">
+        <button (click)="add()" class="btn btn-success" type="submit">Add</button>
+      </div>
+    </form>
+  </div>
+  

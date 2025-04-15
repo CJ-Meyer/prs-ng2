@@ -17,11 +17,12 @@ import { RequestListComponent } from './feature/request/request-list/request-lis
 import { RequestEditComponent } from './feature/request/request-edit/request-edit.component';
 import { RequestCreateComponent } from './feature/request/request-create/request-create.component';
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
-import { LineItemListComponent } from './feature/lineItem/line-item-list/line-item-list.component';
 import { LineItemCreateComponent } from './feature/lineItem/line-item-create/line-item-create.component';
 import { LineItemEditComponent } from './feature/lineItem/line-item-edit/line-item-edit.component';
 import { LineItemDetailComponent } from './feature/lineItem/line-item-detail/line-item-detail.component';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
+import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
+import { RequestRejectComponent } from './feature/request/request-reject/request-reject.component';
 
 
 const routes: Routes = [
@@ -43,11 +44,12 @@ const routes: Routes = [
   { path: 'request-create', component: RequestCreateComponent },
   { path: 'request-edit/:id', component: RequestEditComponent },
   { path: 'request-detail/:id', component: RequestDetailComponent },
-  { path: 'lineItem-list', component: LineItemListComponent },
-  { path: 'lineItem-create', component: LineItemCreateComponent },
+  { path: 'lineItem-create/:id', component: LineItemCreateComponent },
   { path: 'lineItem-edit/:id', component: LineItemEditComponent },
   { path: 'lineItem-detail/:id', component: LineItemDetailComponent },
   { path: 'request-lines/:id', component: RequestLinesComponent },
+  { path: 'request-review', component: RequestReviewComponent},
+  { path: 'request-reject/:id', component: RequestRejectComponent},
 ];
 
 @NgModule({

@@ -11,11 +11,15 @@ export class SystemService {
   constructor(private router: Router) {}
 
   checkLogin(): void {
-    // check loggedInUser, if not logged in, forward to Login page
-    // only call this method when ready for primetime
+    console.log('Checking login status...');
+    console.log('Logged in user ID:', this.loggedInUser.id);
     if (this.loggedInUser.id == 0) {
       console.log('User not authenticated. Redirecting to login.');
       this.router.navigateByUrl('/user-login');
     }
+  }
+  isAdmin(): boolean {
+    console.log('Checking if user is admin...');
+    return this.loggedInUser.isAdmin == true;
   }
 }

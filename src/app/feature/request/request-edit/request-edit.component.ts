@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-request-edit',
@@ -15,14 +16,16 @@ export class RequestEditComponent implements OnInit, OnDestroy {
   request!: Request;
   requestId!: number;
   subscription!: Subscription;
-
+  isAdmin: boolean = false;
   constructor(
     private requestSvc: RequestService,
     private actRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sysSvc: SystemService
   ) {}
-
+    
   ngOnInit(): void {
+    this.isAdmin = this.sysSvc.isAdmin();
     this.actRoute.params.subscribe((params) => {
       this.requestId = +params['id'];
       this.subscription = this.requestSvc.getById(this.requestId).subscribe({

@@ -22,9 +22,9 @@ export class RequestListComponent implements OnInit, OnDestroy {
   constructor(private requestSvc: RequestService, private sysSvc: SystemService) {}
 
   ngOnInit(): void {
-    console.log('RequestListComponent');
     this.loggedInUser = this.sysSvc.loggedInUser;
     this.isAdmin = this.loggedInUser.isAdmin;
+    this.welcomeMsg = `Hello, ${this.loggedInUser.firstName}!`;
     this.subscription = this.requestSvc.list().subscribe({
       next: (resp) => (this.requests = resp),
       error: (err) => console.error('Error loading requests:', err)

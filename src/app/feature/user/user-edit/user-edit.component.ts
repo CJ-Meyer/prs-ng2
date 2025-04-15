@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../service/user.service';
 import { Subscription } from 'rxjs';
 import { User } from '../../../model/user';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -15,19 +16,22 @@ export class UserEditComponent implements OnInit, OnDestroy{
   userId!: string;
   user!: User;
   subscription!: Subscription;
+  isAdmin: boolean = false;
 
   constructor(
     private userSvc: UserService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private sysSvc: SystemService
   ) {}
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
-
-  ngOnInit(): void {
+    
+    ngOnInit(): void {
+    this.isAdmin = this.sysSvc.isAdmin();
     this.actRoute.params.subscribe((parms: { [x: string]: any; }) => {
       this.userId = parms['id'];
       this.subscription = this.userSvc.getById(this.userId).subscribe({

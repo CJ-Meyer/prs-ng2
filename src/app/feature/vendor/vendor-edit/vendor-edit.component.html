@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div *ngIf="vendor" class="p-4">
     <h2>{{ title }}</h2>
     <table class="table table-sm">
@@ -26,10 +27,14 @@
         </td>
       </tr>
       <tr>
-        <td>State</td>
+        <td>State:</td>
         <td>
-          <input [(ngModel)]="vendor.state" class="rounded" type="text" />
-        </td>
+            <select [(ngModel)]="vendor.state" class="rounded">
+              <option *ngFor="let state of states" [ngValue]="state">
+                {{ state }}
+              </option>
+            </select>
+          </td>
       </tr>
       <tr>
         <td>Zip</td>

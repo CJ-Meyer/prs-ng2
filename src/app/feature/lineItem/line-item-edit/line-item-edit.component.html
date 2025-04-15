@@ -1,1 +1,78 @@
-<p>line-item-edit works!</p>
+<app-menu></app-menu>
+<div class="p-4">
+  <span class="component-title">
+    <h1>{{ title }}</h1>
+  </span>
+
+  <div *ngIf="lineItem">
+    <main class="single">
+      <table class="table table-sm">
+        <tr>
+          <td>Product:</td>
+          <td>
+            <select
+              [(ngModel)]="lineItem.product"
+              class="rounded"
+              [compareWith]="compareProduct"
+              name="product"
+            >
+              <option *ngFor="let p of products" [ngValue]="p">
+                {{ p.name }}
+              </option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Vendor:</td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              [value]="lineItem.product.vendor.name"
+              disabled
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Price:</td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              [value]="'$' + lineItem.product.price.toFixed(2)"
+              disabled
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Quantity:</td>
+          <td>
+            <input
+              [(ngModel)]="lineItem.quantity"
+              type="number"
+              class="form-control"
+              name="quantity"
+              min="1"
+              required
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>Total:</td>
+          <td>
+            <input
+              class="form-control"
+              type="text"
+              [value]="'$' + (lineItem.product.price * lineItem.quantity).toFixed(2)"
+              disabled
+            />
+          </td>
+        </tr>
+      </table>
+    </main>
+
+    <span>
+      <button (click)="update()" class="btn btn-sm btn-primary">Save</button>
+    </span>
+  </div>
+</div>

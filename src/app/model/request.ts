@@ -1,12 +1,13 @@
 import { User } from './user';
 
 export class Request {
+  
   id: number;
   user: User;
   requestNumber?: string;
   description: string;
   justification: string;
-  dateNeeded: string; // use string for binding, convert to LocalDate in backend
+  dateNeeded: string;
   deliveryMode: string;
   status?: string;
   total?: number;

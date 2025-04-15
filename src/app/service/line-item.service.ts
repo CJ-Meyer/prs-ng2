@@ -3,6 +3,8 @@ import { LineItem } from '../model/line-item';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+const URL = 'http://localhost:8080/api/lineitems';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,4 +31,8 @@ export class LineItemService {
     delete(id: number): Observable<any> {
       return this.http.delete(`${URL}/${id}`);
     }
+    listByRequestId(requestId: number): Observable<LineItem[]> {
+      return this.http.get<LineItem[]>(URL + '/lines-for-req/' + requestId);
+    }
+    
 }

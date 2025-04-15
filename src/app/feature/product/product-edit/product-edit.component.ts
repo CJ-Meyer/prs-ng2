@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from '../../../model/product';
 import { ProductService } from '../../../service/product.service';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -15,10 +16,12 @@ export class ProductEditComponent implements OnInit, OnDestroy {
   productId!: number;
   product!: Product;
   subscription!: Subscription;
+  isAdmin: boolean = false;
 
-  constructor(private productSvc: ProductService, private router: Router, private route: ActivatedRoute) {}
-
+  constructor(private productSvc: ProductService, private router: Router, private route: ActivatedRoute, private sysSvc: SystemService) {}
+    
   ngOnInit(): void {
+    this.isAdmin = this.sysSvc.isAdmin();
     this.route.params.subscribe(params => {
       this.productId = params['id'];
       this.subscription = this.productSvc.getById(this.productId).subscribe({
